@@ -25,5 +25,11 @@ describe Oystercard do
 		expect(oystercard.balance).to eq(60)
 	end
 
+	it "deducts given amount from balance" do
+		oystercard.top_up(40)
+		oystercard.deduct(20)
+		expect(oystercard.balance).to eq 20
+	end
+
 
 end
