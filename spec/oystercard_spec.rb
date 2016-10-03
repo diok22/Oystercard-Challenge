@@ -31,5 +31,10 @@ describe Oystercard do
 		expect(oystercard.balance).to eq 20
 	end
 
+	it "touch_in would start the journey" do
+		oystercard.touch_in
+		expect(oystercard).to be_in_journey
+	end
+
 
 end
