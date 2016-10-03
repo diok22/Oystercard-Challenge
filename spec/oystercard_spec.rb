@@ -19,6 +19,10 @@ describe Oystercard do
 		expect(oystercard.balance).to eq(amount)
 	end
 
+	it 'has a maximum top up limit of £90' do
+		expect(@maximum_limit).to eq(90)
+	end
+
 	it 'allows balance to top up maximum of £90' do
 		oystercard.top_up(60)
 		expect { oystercard.top_up(31) }.to raise_error @error1
@@ -36,5 +40,10 @@ describe Oystercard do
 		expect(oystercard).to be_in_journey
 	end
 
+	it 'touch_out would end the journey' do
+		oystercard.touch_in
+		oystercard.touch_out
+		expect(oystercard).to_not be_in_journey
+	end
 
 end
