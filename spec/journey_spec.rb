@@ -10,6 +10,18 @@ describe Journey do
     @station2 = double(:station)
     allow(@station2).to receive(:name).and_return('Paddington')
     allow(@station2).to receive(:zone).and_return(2)
+    @hash1 = {entry_station: nil,
+              entry_zone: nil,
+              exit_station: nil,
+              exit_zone: nil}
+    @hash2 = {entry_station: 'Waterloo',
+              entry_zone: 1,
+              exit_station: nil,
+              exit_zone: nil}
+    @hash3 = {entry_station: 'Waterloo',
+              entry_zone: 1,
+              exit_station: 'Paddington',
+              exit_zone: 2}
   end
 
   describe '#initialize' do
@@ -19,34 +31,29 @@ describe Journey do
     end
 
     it "contains a hash with empty keys" do
-      expect(journey.trip).to eq ({entry_station: nil,
-                                   entry_zone: nil,
-                                   exit_station: nil,
-                                   exit_zone: nil})
+      expect(journey.trip).to eq(@hash1)
     end
   end
 
   describe '#start_trip' do
     it 'adds start station name and zone to trip' do
       journey.start_trip(@station)
-      expect(journey.trip).to eq({entry_station: 'Waterloo',
-                                  entry_zone: 1,
-                                  exit_station: nil,
-                                  exit_zone: nil})
+      expect(journey.trip).to eq(@hash2)
     end
   end
 
   describe '#end_trip' do
-    it 'adds end location and zone to trip' do
+    before :each do
       journey.start_trip(@station)
       journey.end_trip(@station2)
-      expect(journey.trip).to eq({entry_station: 'Waterloo',
-                                  entry_zone: 1,
-                                  exit_station: 'Paddington',
-                                  exit_zone: 2})
+    end
+
+    it 'adds end location and zone to trip' do
+      expect(journey.trip).to eq(@hash3)
     end
 
     it 'appends the trip to the history log' do
+      # expect(journey.history).to eq([@hash3])
     end
 
     it 'calls fare method' do
