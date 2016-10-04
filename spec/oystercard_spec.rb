@@ -49,6 +49,12 @@ describe Oystercard do
 		it "has a minimum fare of 1" do
 			expect(@minimum_fare).to eq(1)
 		end
+
+		it "records entry station" do
+			oystercard.top_up(5)
+			oystercard.touch_in('Waterloo')
+			expect(oystercard.entry_station).to eq('Waterloo')
+		end
 	end
 
 	describe '#touch_out' do
@@ -64,6 +70,13 @@ describe Oystercard do
 			oystercard.top_up(5)
 			oystercard.touch_in
 			expect {oystercard.touch_out}.to change{oystercard.balance}.by(-1)
+		end
+
+		it 'clears entry station' do
+			oystercard.top_up(5)
+			oystercard.touch_in('Waterloo')
+			oystercard.touch_out
+			expect(oystercard.entry_station).to be nil
 		end
 	end
 end
