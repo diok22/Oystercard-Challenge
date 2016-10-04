@@ -18,4 +18,9 @@ class Journey
     trip[:entry_station] = station.name
     trip[:entry_zone] = station.zone
   end
+
+  def end_trip(station)
+    trip[:exit_station] = station.name
+    trip[:exit_zone] = station.zone
+  end
 end
