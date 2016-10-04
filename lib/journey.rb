@@ -1,6 +1,6 @@
 class Journey
 
-  attr_reader :history, :current_trip
+  attr_reader :history, :current_trip, :fare
 
   def initialize
     clear_current_trip
@@ -28,5 +28,10 @@ class Journey
   end
 
   def fare
+    if @current_trip[:entry_station] == nil
+      6
+    else
+      1
+    end
   end
 end

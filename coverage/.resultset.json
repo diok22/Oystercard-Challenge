@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/michaelcalvey/Programming/makers/main/week_2/oyster_cards/spec/journey_spec.rb": [
+      "/Users/Dio22/Makers_Academy/Weekly_Challenges/Week2_Oystercard/spec/journey_spec.rb": [
         1,
         null,
         1,
@@ -48,7 +48,6 @@
         null,
         1,
         1,
-        1,
         2,
         2,
         null,
@@ -63,17 +62,20 @@
         null,
         null,
         1,
+        null,
+        1,
         1,
         1,
         null,
         null,
-        null,
         1,
+        1,
+        null,
         null,
         null,
         null
       ],
-      "/Users/michaelcalvey/Programming/makers/main/week_2/oyster_cards/lib/journey.rb": [
+      "/Users/Dio22/Makers_Academy/Weekly_Challenges/Week2_Oystercard/lib/journey.rb": [
         1,
         null,
         1,
@@ -104,10 +106,15 @@
         null,
         null,
         1,
+        4,
+        0,
+        null,
+        4,
+        null,
         null,
         null
       ]
     },
-    "timestamp": 1475589056
+    "timestamp": 1475593766
   }
 }

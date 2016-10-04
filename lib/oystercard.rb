@@ -1,4 +1,7 @@
+require 'journey'
+
 class Oystercard
+
 
 	MAXIMUM_LIMIT = 90
 	MINIMUM_FARE = 1
