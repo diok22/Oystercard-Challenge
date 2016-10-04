@@ -69,6 +69,11 @@ describe Journey do
       journey.end_trip(@station2)
       expect(journey.fare).to eq(6)
     end
+
+    it "charges 6 if user skips touching out" do
+      journey.start_trip(@station)
+      expect(journey.fare).to eq(6)
+    end
   end
 
 end

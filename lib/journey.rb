@@ -30,6 +30,8 @@ class Journey
   def fare
     if @current_trip[:entry_station] == nil
       6
+    elsif @current_trip[:exit_station] == nil
+      6
     else
       1
     end
