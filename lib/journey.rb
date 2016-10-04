@@ -27,6 +27,10 @@ class Journey
     fare
   end
 
+  def end_unfinished_trip
+    @history << @current_trip
+  end
+
   def fare
     if @current_trip[:entry_station] == nil
       6

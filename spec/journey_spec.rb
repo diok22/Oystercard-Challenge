@@ -42,6 +42,22 @@ describe Journey do
     end
   end
 
+  describe '#clear_current_trip' do
+    it 'resets current trip hash' do
+      journey.start_trip(@station)
+      journey.clear_current_trip
+      expect(journey.current_trip).to eq(@hash1)
+    end
+  end
+
+  describe '#end_unfinished_trip' do
+    it 'saves start location and zone hash to history' do
+      journey.start_trip(@station)
+      journey.end_unfinished_trip
+      expect(journey.history).to eq([@hash2])
+    end
+  end
+
   describe '#end_trip' do
     before :each do
       journey.start_trip(@station)
@@ -59,21 +75,6 @@ describe Journey do
 
   describe '#fare' do
 
-    it "charges the minimum amount for a complete journey" do
-      journey.start_trip(@station)
-      journey.end_trip(@station2)
-      expect(journey.fare).to eq(1)
-    end
-
-    it "charges 6 if user skips touching in" do
-      journey.end_trip(@station2)
-      expect(journey.fare).to eq(6)
-    end
-
-    it "charges 6 if user skips touching out" do
-      journey.start_trip(@station)
-      expect(journey.fare).to eq(6)
-    end
   end
 
 end
