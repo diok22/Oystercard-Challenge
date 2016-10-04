@@ -79,9 +79,9 @@ describe Oystercard do
 			expect(oystercard.entry_station).to be nil
 		end
 
-		# it 'expecting history hash to hold entry and exit stations' do
-		# 	expect(oystercard.)
-		# end
+		it 'expecting journey hash to hold entry and exit stations as keys' do
+			expect(oystercard.journey).to include(:entry_station, :exit_station)
+		end
 
 		it 'stores the journey in the history array' do
 			oystercard.top_up(5)
