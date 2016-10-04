@@ -4,7 +4,7 @@ class Journey
 
   def initialize
     clear_current_trip
-    @history = []
+
   end
 
   def clear_current_trip
@@ -24,7 +24,6 @@ class Journey
     current_trip[:exit_station] = station.name
     current_trip[:exit_zone] = station.zone
     @history << @current_trip
-    fare
   end
 
   def end_unfinished_trip
