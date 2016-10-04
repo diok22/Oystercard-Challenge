@@ -6,6 +6,7 @@ describe Oystercard do
 
 	before(:each) do
 		@maximum_limit = Oystercard::MAXIMUM_LIMIT
+		@minimum_fare = Oystercard::MINIMUM_FARE
 		@error1 = "The maximum balance you can have is £#{@maximum_limit}!"
 	end
 
@@ -55,8 +56,10 @@ describe Oystercard do
 		it "raises an error when balance is under the minimum amount" do
 			oystercard.top_up(0.5)
 			expect {oystercard.touch_in}.to raise_error "Insufficient funds"
+		end
 
-
+		it "has a minimum fare of 1" do
+			expect(@minimum_fare).to eq(1)
 		end
 
 	end
