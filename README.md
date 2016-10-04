@@ -1,0 +1,14 @@
+[![Build Status](https://travis-ci.org/LMCMLJ/oyster_cards.svg?branch=master)](https://travis-ci.org/LMCMLJ/oyster_cards)
+[![Coverage Status](https://coveralls.io/repos/github/LMCMLJ/oyster_cards/badge.svg?branch=master)](https://coveralls.io/github/LMCMLJ/oyster_cards?branch=master)
+Oyster Card Management System
+===================
+
+###Authors:
+Dionysis Kastellanis, Michael Calvey
+
+###Description:
+This is a short script created to help manage a system of oyster cards.
+
+###How to run:
+First, run `bundle install` in terminal to ensure gem compatability.
+Second, require the files in './lib', and then instance as necessary.
