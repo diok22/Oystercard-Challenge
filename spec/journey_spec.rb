@@ -26,9 +26,6 @@ describe Journey do
 
   describe '#initialize' do
 
-    it "creates an empty history array" do
-      expect(journey.history.empty?).to be true
-    end
 
     it "contains a hash with empty keys" do
       expect(journey.current_trip).to eq(@hash1)
@@ -54,7 +51,7 @@ describe Journey do
     it 'saves start location and zone hash to history' do
       journey.start_trip(@station)
       journey.end_unfinished_trip
-      expect(journey.history).to eq([@hash2])
+      expect(journey.current_trip).to eq(@hash2)
     end
   end
 
@@ -67,13 +64,6 @@ describe Journey do
     it 'adds end location and zone to trip' do
       expect(journey.current_trip).to eq(@hash3)
     end
-
-    it 'appends the trip to the history log' do
-      expect(journey.history).to eq([@hash3])
-    end
-  end
-
-  describe '#fare' do
 
   end
 

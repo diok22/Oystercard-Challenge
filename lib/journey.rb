@@ -1,9 +1,12 @@
+require_relative "journey_log"
+
 class Journey
 
   attr_reader :history, :current_trip, :fare
 
   def initialize
     clear_current_trip
+    @logger = JourneyLog.new
 
   end
 
@@ -23,11 +26,11 @@ class Journey
   def end_trip(station)
     current_trip[:exit_station] = station.name
     current_trip[:exit_zone] = station.zone
-    @history << @current_trip
+    @logger.record_trip(@current_trip)
   end
 
   def end_unfinished_trip
-    @history << @current_trip
+    @logger.record_trip(@current_trip)
   end
 
   def fare
