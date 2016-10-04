@@ -10,5 +10,5 @@ Dionysis Kastellanis, Michael Calvey
 This is a short script created to help manage a system of oyster cards.
 
 ###How to run:
-First, run `bundle install` in terminal to ensure gem compatability.
+First, run `gem install bundle` `bundle install` in terminal to ensure gem compatability.
 Second, require the files in './lib', and then instance as necessary.
