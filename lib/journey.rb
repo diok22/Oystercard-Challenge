@@ -14,4 +14,8 @@ class Journey
               exit_zone: nil})
   end
 
+  def start_trip(station)
+    trip[:entry_station] = station.name
+    trip[:entry_zone] = station.zone
+  end
 end
