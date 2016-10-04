@@ -31,18 +31,6 @@ describe Oystercard do
 		it 'has a maximum top up limit of £90' do
 			expect(@maximum_limit).to eq(90)
 		end
-
-	end
-
-
-	describe "#deduct" do
-
-		it "given amount from balance" do
-			oystercard.top_up(40)
-			oystercard.deduct(20)
-			expect(oystercard.balance).to eq 20
-		end
-
 	end
 
 	describe '#touch_in' do
@@ -61,10 +49,7 @@ describe Oystercard do
 		it "has a minimum fare of 1" do
 			expect(@minimum_fare).to eq(1)
 		end
-
 	end
-
-
 
 	describe '#touch_out' do
 
@@ -75,6 +60,10 @@ describe Oystercard do
 			expect(oystercard).to_not be_in_journey
 		end
 
+		it 'charges minumum fare' do
+			oystercard.top_up(5)
+			oystercard.touch_in
+			expect {oystercard.touch_out}.to change{oystercard.balance}.by(-1)
+		end
 	end
-
 end
