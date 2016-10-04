@@ -59,13 +59,15 @@ describe Journey do
 
   describe '#fare' do
 
-    before :each do
+    it "charges the minimum amount for a complete journey" do
       journey.start_trip(@station)
       journey.end_trip(@station2)
+      expect(journey.fare).to eq(1)
     end
 
-    it "charges the minimum amount for a complete journey" do
-      expect(journey.fare).to eq(1)
+    it "charges 6 if user skips touching in" do
+      journey.end_trip(@station2)
+      expect(journey.fare).to eq(6)
     end
   end
 
