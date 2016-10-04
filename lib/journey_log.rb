@@ -9,4 +9,8 @@ class JourneyLog
   def record_trip(hash)
     @log << hash
   end
+
+  def journeys
+    @log
+  end
 end

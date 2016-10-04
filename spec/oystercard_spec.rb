@@ -78,12 +78,6 @@ describe Oystercard do
 			oystercard.touch_out(@station2)
 			expect(oystercard).to_not be_in_journey
 		end
-
-		it 'charges minumum fare' do
-			oystercard.top_up(5)
-			oystercard.touch_in(@station1)
-			expect {oystercard.touch_out(@station2)}.to change{oystercard.balance}.by(-1)
-		end
 	end
 
 end

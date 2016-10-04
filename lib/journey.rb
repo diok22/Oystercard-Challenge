@@ -2,7 +2,8 @@ require_relative "journey_log"
 
 class Journey
 
-  attr_reader :history, :current_trip, :fare
+  attr_reader :history, :fare
+  attr_accessor :current_trip
 
   def initialize
     clear_current_trip
@@ -39,7 +40,8 @@ class Journey
     elsif @current_trip[:exit_station] == nil
       6
     else
-      1
+      zone_difference = (@current_trip[:entry_zone] - @current_trip[:exit_zone]).abs
+      1 + zone_difference
     end
   end
 end

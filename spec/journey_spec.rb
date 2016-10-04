@@ -26,7 +26,6 @@ describe Journey do
 
   describe '#initialize' do
 
-
     it "contains a hash with empty keys" do
       expect(journey.current_trip).to eq(@hash1)
     end
@@ -63,6 +62,26 @@ describe Journey do
 
     it 'adds end location and zone to trip' do
       expect(journey.current_trip).to eq(@hash3)
+    end
+  end
+
+  describe '#fare' do
+    before :each do
+    end
+
+    it 'Charges 6 for an incomplete trip (user error)' do
+      journey.current_trip = @hash2
+      expect(journey.fare).to eq(6)
+    end
+
+    it 'Charges 1 for staying withing the same zone' do
+    
+    end
+
+    it 'Charges 5 for going from zone 1 to 5' do
+    end
+
+    it 'Charges 4 for going from 4 to 1' do
     end
 
   end

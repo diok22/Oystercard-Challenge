@@ -18,4 +18,11 @@ describe JourneyLog do
     end
   end
 
+  describe "#journeys" do
+    it "returns the log" do
+      journey_log.record_trip(@hash)
+      journey_log.record_trip(@hash)
+      expect(journey_log.journeys).to eq([@hash, @hash])
+    end
+  end
 end
