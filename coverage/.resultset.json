@@ -164,8 +164,39 @@
         4,
         null,
         null
+      ],
+      "/Users/michaelcalvey/Programming/makers/main/week_2/oyster_cards/spec/station_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        3,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/michaelcalvey/Programming/makers/main/week_2/oyster_cards/lib/station.rb": [
+        1,
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null
       ]
     },
-    "timestamp": 1475582538
+    "timestamp": 1475584008
   }
 }
