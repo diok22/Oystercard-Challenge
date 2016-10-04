@@ -37,13 +37,13 @@ describe Oystercard do
 
 		it "starts the journey" do
 			oystercard.top_up(5)
-			oystercard.touch_in
+			oystercard.touch_in('Paddington')
 			expect(oystercard).to be_in_journey
 		end
 
 		it "raises an error when balance is under the minimum amount" do
 			oystercard.top_up(0.5)
-			expect {oystercard.touch_in}.to raise_error "Insufficient funds"
+			expect {oystercard.touch_in('Paddington')}.to raise_error "Insufficient funds"
 		end
 
 		it "has a minimum fare of 1" do
@@ -61,22 +61,34 @@ describe Oystercard do
 
 		it 'ends the journey' do
 			oystercard.top_up(5)
-			oystercard.touch_in
-			oystercard.touch_out
+			oystercard.touch_in('Paddington')
+			oystercard.touch_out('Euston Square')
 			expect(oystercard).to_not be_in_journey
 		end
 
 		it 'charges minumum fare' do
 			oystercard.top_up(5)
-			oystercard.touch_in
-			expect {oystercard.touch_out}.to change{oystercard.balance}.by(-1)
+			oystercard.touch_in('Paddington')
+			expect {oystercard.touch_out('Euston Square')}.to change{oystercard.balance}.by(-1)
 		end
 
 		it 'clears entry station' do
 			oystercard.top_up(5)
 			oystercard.touch_in('Waterloo')
-			oystercard.touch_out
+			oystercard.touch_out('Euston Square')
 			expect(oystercard.entry_station).to be nil
 		end
+
+		# it 'expecting history hash to hold entry and exit stations' do
+		# 	expect(oystercard.)
+		# end
+
+		it 'stores the journey in the history array' do
+			oystercard.top_up(5)
+			oystercard.touch_in('Paddington')
+			oystercard.touch_out('Euston Square')
+			expect(oystercard.history[0]).to match({:entry_station => 'Paddington', :exit_station => 'Euston Square'})
+		end
 	end
+
 end
