@@ -13,37 +13,57 @@ describe Oystercard do
 		expect(oystercard.balance).to eq(0)
 	end
 
-	it 'tops up oystercard with given amount' do
-		amount = rand(5..20) # can take various amounts
-		oystercard.top_up(amount)
-		expect(oystercard.balance).to eq(amount)
+	describe "#top_up" do
+
+		it 'oystercard with given amount' do
+			amount = rand(5..20) # can take various amounts
+			oystercard.top_up(amount)
+			expect(oystercard.balance).to eq(amount)
+		end
+
+		it 'allows balance to top up maximum of £90' do
+			oystercard.top_up(60)
+			expect { oystercard.top_up(31) }.to raise_error @error1
+			expect(oystercard.balance).to eq(60)
+		end
+
+		it 'has a maximum top up limit of £90' do
+			expect(@maximum_limit).to eq(90)
+		end
+
 	end
 
-	it 'has a maximum top up limit of £90' do
-		expect(@maximum_limit).to eq(90)
+
+	describe "#deduct" do
+
+		it "given amount from balance" do
+			oystercard.top_up(40)
+			oystercard.deduct(20)
+			expect(oystercard.balance).to eq 20
+		end
+
 	end
 
-	it 'allows balance to top up maximum of £90' do
-		oystercard.top_up(60)
-		expect { oystercard.top_up(31) }.to raise_error @error1
-		expect(oystercard.balance).to eq(60)
+	describe '#touch_in' do
+
+		it "starts the journey" do
+			oystercard.touch_in
+			expect(oystercard).to be_in_journey
+		end
+
+
 	end
 
-	it "deducts given amount from balance" do
-		oystercard.top_up(40)
-		oystercard.deduct(20)
-		expect(oystercard.balance).to eq 20
-	end
 
-	it "touch_in would start the journey" do
-		oystercard.touch_in
-		expect(oystercard).to be_in_journey
-	end
 
-	it 'touch_out would end the journey' do
-		oystercard.touch_in
-		oystercard.touch_out
-		expect(oystercard).to_not be_in_journey
+	describe '#touch_out' do
+
+		it 'ends the journey' do
+			oystercard.touch_in
+			oystercard.touch_out
+			expect(oystercard).to_not be_in_journey
+		end
+
 	end
 
 end
