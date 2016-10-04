@@ -24,5 +24,9 @@ class Journey
     current_trip[:exit_station] = station.name
     current_trip[:exit_zone] = station.zone
     @history << @current_trip
+    fare
+  end
+
+  def fare
   end
 end

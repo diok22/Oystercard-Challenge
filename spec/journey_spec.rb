@@ -55,9 +55,6 @@ describe Journey do
     it 'appends the trip to the history log' do
       expect(journey.history).to eq([@hash3])
     end
-
-    it 'calls fare method' do
-    end
   end
 
   describe '#fare' do
