@@ -10,8 +10,15 @@ describe Oystercard do
 		@error1 = "The maximum balance you can have is £#{@maximum_limit}!"
 	end
 
-	it 'initializes with a balance of 0' do
-		expect(oystercard.balance).to eq(0)
+	describe '#initialize' do
+
+		it 'initializes with a balance of 0' do
+			expect(oystercard.balance).to eq(0)
+		end
+
+		it 'creates an empty list of journeys' do
+			expect(oystercard.history).to eq([])
+		end
 	end
 
 	describe "#top_up" do

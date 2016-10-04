@@ -1,21 +1,28 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/Dio22/Makers_Academy/Weekly_Challenges/Week2_Oystercard/spec/oystercard_spec.rb": [
+      "/Users/michaelcalvey/Programming/makers/main/week_2/oyster_cards/spec/oystercard_spec.rb": [
         1,
         null,
         1,
         null,
-        12,
-        null,
-        1,
-        13,
-        13,
         13,
         null,
+        1,
+        14,
+        14,
+        14,
+        null,
+        null,
+        1,
         null,
         1,
         1,
+        null,
+        null,
+        1,
+        1,
+        null,
         null,
         null,
         1,
@@ -97,7 +104,7 @@
         null,
         null
       ],
-      "/Users/Dio22/Makers_Academy/Weekly_Challenges/Week2_Oystercard/lib/oystercard.rb": [
+      "/Users/michaelcalvey/Programming/makers/main/week_2/oyster_cards/lib/oystercard.rb": [
         1,
         null,
         1,
@@ -107,10 +114,10 @@
         1,
         null,
         1,
-        11,
-        11,
-        11,
-        11,
+        12,
+        12,
+        12,
+        12,
         null,
         null,
         1,
@@ -148,7 +155,7 @@
         null,
         null,
         1,
-        15,
+        16,
         null,
         null,
         1,
@@ -159,6 +166,6 @@
         null
       ]
     },
-    "timestamp": 1475578673
+    "timestamp": 1475582538
   }
 }
