@@ -31,14 +31,14 @@ describe Journey do
     end
 
     it "contains a hash with empty keys" do
-      expect(journey.trip).to eq(@hash1)
+      expect(journey.current_trip).to eq(@hash1)
     end
   end
 
   describe '#start_trip' do
     it 'adds start station name and zone to trip' do
       journey.start_trip(@station)
-      expect(journey.trip).to eq(@hash2)
+      expect(journey.current_trip).to eq(@hash2)
     end
   end
 
@@ -49,11 +49,11 @@ describe Journey do
     end
 
     it 'adds end location and zone to trip' do
-      expect(journey.trip).to eq(@hash3)
+      expect(journey.current_trip).to eq(@hash3)
     end
 
     it 'appends the trip to the history log' do
-      # expect(journey.history).to eq([@hash3])
+      expect(journey.history).to eq([@hash3])
     end
 
     it 'calls fare method' do
