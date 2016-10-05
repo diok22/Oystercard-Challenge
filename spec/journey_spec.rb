@@ -25,26 +25,31 @@ describe Journey do
 
   end
 
-  it "last journey hash has the appropriate key symbols" do
-    expect(journey_history.clear_current_journey).to include(:entry_station, :entry_zone,
-                                                      :exit_station, :exit_zone)
+  describe '#clear_current_journey' do
+    it "last journey hash has the appropriate key symbols" do
+      expect(journey_history.clear_current_journey).to include(:entry_station, :entry_zone,
+                                                        :exit_station, :exit_zone)
+    end
+
+    it 'checks the default journey history' do
+      expect(journey_history.clear_current_journey).to eq({entry_station: nil, entry_zone: nil,
+                                                          exit_station: nil, exit_zone: nil})
+    end
   end
 
-  it 'checks if one journey is created on touch out' do
-    journey_history.start_journey(@station1)
-    journey_history.end_journey(@station2)
-    expect(journey_history.current_journey).to eq({entry_station: "Paddington", entry_zone: 1,
-                                    exit_station: "Waterloo", exit_zone: 2})
-  end
+  describe '#current_journey hash' do
+    it 'checks if one journey is created on touch out' do
+      journey_history.start_journey(@station1)
+      journey_history.end_journey(@station2)
+      expect(journey_history.current_journey).to eq({entry_station: "Paddington", entry_zone: 1,
+                                      exit_station: "Waterloo", exit_zone: 2})
+    end
 
-  it 'checks the default journey history' do
-    expect(journey_history.clear_current_journey).to eq({entry_station: nil, entry_zone: nil,
-                                                        exit_station: nil, exit_zone: nil})
-  end
+    it 'records entry station name and zone' do
+      journey_history.start_journey(@station1)
+      expect(journey_history.current_journey).to eq({entry_station: "Paddington", entry_zone: 1, exit_station: nil, exit_zone: nil})
+    end
 
-  it 'records entry station name and zone' do
-    journey_history.start_journey(@station1)
-    expect(journey_history.current_journey).to eq({entry_station: "Paddington", entry_zone: 1, exit_station: nil, exit_zone: nil})
   end
 
 end
