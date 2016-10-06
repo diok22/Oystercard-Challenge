@@ -6,50 +6,36 @@ describe Journey do
 
   subject(:journey) {described_class.new}
 
-  before :each do
-    @station1 = Station.new('Paddington',1)
-    @station2 = Station.new('Waterloo',2)
+  describe '#initialize' do
+    it 'by default the current journey is empty' do
+      expect(journey.current_journey).to eq({entry_station: nil, entry_zone: nil,
+                                             exit_station: nil, exit_zone: nil})
+    end
   end
 
   describe "#fare" do
-    it "deducts the minimum fare for a single trip" do
-      journey.start_journey(@station1)
-      journey.end_journey(@station2)
-      expect(journey.fare).to eq Journey::MINIMUM_FARE
+    it "deducts the minimum fare for a complete single journey" do
+      journey.current_journey = {entry_station: "Waterloo", entry_zone: 1,
+                          exit_station: "Euston", exit_zone: 1}
+      expect(journey.fare).to eq(1)
     end
 
-    it 'deducts the penalty fare for incomplete journey' do
-      journey.start_journey(@station1)
-      expect(journey.fare).to eq Journey::DEFAULT_PENALTY
+    it "deducts the penalty fare for an incomplete journey" do
+      journey.current_journey = {entry_station: "Waterloo", entry_zone: 1,
+                                 exit_station: nil, exit_zone: nil}
+      expect(journey.fare).to eq(6)
     end
 
-  end
-
-  describe '#clear_current_journey' do
-    it "last journey hash has the appropriate key symbols" do
-      expect(journey.clear_current_journey).to include(:entry_station, :entry_zone,
-                                                        :exit_station, :exit_zone)
-    end
-
-    it 'checks the default journey history' do
-      expect(journey.clear_current_journey).to eq({entry_station: nil, entry_zone: nil,
-                                                          exit_station: nil, exit_zone: nil})
+    context "different zone trip fares" do
+      it "2 pounds trip for moving one zone" do
+      journey.current_journey = {entry_station: "Waterloo", entry_zone: 1,
+                          exit_station: "Euston", exit_zone: 2}
+      expect(journey.fare).to eq(2)
+      end
     end
   end
 
-  describe '#current_journey hash' do
-    it 'checks if one journey is created on touch out' do
-      journey.start_journey(@station1)
-      journey.end_journey(@station2)
-      expect(journey.current_journey).to eq({entry_station: "Paddington", entry_zone: 1,
-                                      exit_station: "Waterloo", exit_zone: 2})
-    end
 
-    it 'records entry station name and zone' do
-      journey.start_journey(@station1)
-      expect(journey.current_journey).to eq({entry_station: "Paddington", entry_zone: 1, exit_station: nil, exit_zone: nil})
-    end
 
-  end
 
 end

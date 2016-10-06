@@ -5,7 +5,7 @@ class Journey
   DEFAULT_PENALTY = 6
   MINIMUM_FARE = 1
 
-  attr_reader :history_journey, :clear_current_journey, :current_journey
+  attr_accessor :current_journey
 
   def initialize
     # @journey_history = JourneyLog.new
@@ -21,7 +21,8 @@ class Journey
     elsif @current_journey[:exit_station] == nil
       DEFAULT_PENALTY
     else
-      MINIMUM_FARE
+      zone_difference = (@current_journey[:exit_zone] - @current_journey[:entry_zone])
+      MINIMUM_FARE + zone_difference.abs
     end
   end
 
