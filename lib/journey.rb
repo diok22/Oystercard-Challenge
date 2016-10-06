@@ -8,7 +8,7 @@ class Journey
   attr_reader :history_journey, :clear_current_journey, :current_journey
 
   def initialize
-    @journey_history = []
+    @journey_history = JourneyLog.new
   end
 
   def clear_current_journey

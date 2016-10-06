@@ -13,11 +13,19 @@ describe JourneyLog do
     @station2 = Station.new('Waterloo',2)
   end
 
-  it "logs a list of all journeys" do
+  # it "logs a list of all journeys" do
+  #
+  #   expect(journey_logger.journey_history).to eq([{entry_station: "Paddington", entry_zone: 1,
+  #                                   exit_station: "Waterloo", exit_zone: 2}])
+  #
+  # end
 
-    expect(journey_logger.journey_history).to eq([{entry_station: "Paddington", entry_zone: 1,
-                                    exit_station: "Waterloo", exit_zone: 2}])
+  # describe "#start" do
+  #   it "starts a new journey with an entry station name and zone" do
+  #     expect(journey_logger.start(@station1)). to eq([{entry_station: "Paddington", entry_zone: 1,
+  #                                                    exit_station: nil, exit_zone: nil}])
+  #   end
+  # end
 
-  end
 
 end

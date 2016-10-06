@@ -6,17 +6,17 @@ describe Journey do
 
   subject(:journey_history) {described_class.new}
 
-  before :each do
-    @station1 = Station.new('Paddington',1)
-    @station2 = Station.new('Waterloo',2)
-  end
+  # before :each do
+  #   @station1 = Station.new('Paddington',1)
+  #   @station2 = Station.new('Waterloo',2)
+  # end
 
   describe "#fare" do
-    it "deducts the minimum fare for a single trip" do
-      journey_history.start_journey(@station1)
-      journey_history.end_journey(@station2)
-      expect(journey_history.fare).to eq Journey::MINIMUM_FARE
-    end
+    # it "deducts the minimum fare for a single trip" do
+    #   journey_history.start_journey(@station1)
+    #   journey_history.end_journey(@station2)
+    #   expect(journey_history.fare).to eq Journey::MINIMUM_FARE
+    # end
 
     it 'deducts the penalty fare for incomplete journey' do
       journey_history.start_journey(@station1)
