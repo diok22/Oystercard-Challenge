@@ -9,6 +9,8 @@ class Journey
 
   def initialize
     # @journey_history = JourneyLog.new
+    @current_journey = {entry_station: nil, entry_zone: nil,
+                        exit_station: nil, exit_zone: nil}
   end
 
 

@@ -10,7 +10,7 @@ describe JourneyLog do
   describe '#start' do
     it "creates a new journey" do
       journey_log.start(Station.new("Waterloo",1))
-      expect(journey_log.current_journey).to eq({entry_station: "Waterloo", entry_zone: 1,
+      expect(journey_log.current.current_journey).to eq({entry_station: "Waterloo", entry_zone: 1,
                        exit_station: nil, exit_zone: nil})
     end
   end
