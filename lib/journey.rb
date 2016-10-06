@@ -8,29 +8,10 @@ class Journey
   attr_reader :history_journey, :clear_current_journey, :current_journey
 
   def initialize
-    @journey_history = JourneyLog.new
+    # @journey_history = JourneyLog.new
   end
 
-  def clear_current_journey
-    @current_journey = {entry_station: nil, entry_zone: nil,
-                     exit_station: nil, exit_zone: nil}
-  end
 
-  def start_journey(entry_station)
-    clear_current_journey
-    @current_journey[:entry_station] = entry_station.name
-    @current_journey[:entry_zone] = entry_station.zone
-  end
-
-  def end_journey(exit_station)
-    @current_journey[:exit_station] = exit_station.name
-    @current_journey[:exit_zone] = exit_station.zone
-    history_journey
-  end
-
-  def history_journey
-    @journey_history << @current_journey
-  end
 
   def fare
     if @current_journey[:entry_station] == nil
