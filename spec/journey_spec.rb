@@ -16,7 +16,7 @@ describe Journey do
   describe "#fare" do
     it "deducts the minimum fare for a complete single journey" do
       journey.current_journey = {entry_station: "Waterloo", entry_zone: 1,
-                          exit_station: "Euston", exit_zone: 1}
+                                 exit_station: "Euston", exit_zone: 1}
       expect(journey.fare).to eq(1)
     end
 

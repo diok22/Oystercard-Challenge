@@ -16,14 +16,8 @@ class Journey
 
 
   def fare
-    if @current_journey[:entry_station] == nil
-      DEFAULT_PENALTY
-    elsif @current_journey[:exit_station] == nil
-      DEFAULT_PENALTY
-    else
-      zone_difference = (@current_journey[:exit_zone] - @current_journey[:entry_zone])
-      MINIMUM_FARE + zone_difference.abs
-    end
+    return DEFAULT_PENALTY if @current_journey[:entry_station] == nil ||  @current_journey[:exit_station] == nil
+    zone_difference = (@current_journey[:entry_zone] - @current_journey[:exit_zone])
+    MINIMUM_FARE + zone_difference.abs
   end
-
 end

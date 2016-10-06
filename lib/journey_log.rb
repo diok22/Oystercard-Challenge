@@ -15,7 +15,6 @@ class JourneyLog
   end
 
   def start(entry_station)
-    
     @current.current_journey[:entry_station] = entry_station.name
     @current.current_journey[:entry_zone] = entry_station.zone
   end

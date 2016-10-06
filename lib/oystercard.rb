@@ -25,11 +25,7 @@ class Oystercard
 
   def touch_in(entry_station)
     raise 'Balance is too low' if @balance < MINIMUM_BALANCE
-    if @journey.current.current_journey[:entry_station] != nil
-      @journey.history_journey
-      deduct(@journey.current.fare)
-      @journey.clear_current_journey
-    end
+    no_touch_out
     @journey.start(entry_station)
   end
 
@@ -41,6 +37,14 @@ class Oystercard
 
 
   private
+
+  def no_touch_out
+    if @journey.current.current_journey[:entry_station] != nil
+      @journey.history_journey
+      deduct(@journey.current.fare)
+      @journey.clear_current_journey
+    end
+  end
 
   def deduct(fare)
     @balance -= fare
